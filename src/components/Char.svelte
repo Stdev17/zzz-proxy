@@ -1,15 +1,16 @@
-<script>
-  export let src = "";
-  export let char = "";
+<script lang="ts">
+  export let src;
+  export let name;
+  export let showModal: boolean;
+
 </script>
 
 <style>
   .char {
-    padding: 0;
+    margin: var(--margin, 0.5em);
     width: var(--width, auto);
     height: var(--height, auto);
     border: 1px solid black;
-    margin: 0;
     display: flex;
   }
   .img {
@@ -18,10 +19,19 @@
     background-size: cover;
     background-position: center;
   }
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+  }
 </style>
 
 <div class="char">
   <slot>
-    <img src={src} class="img" alt={"A portrait of "+{char}} />
+    <button on:click={() => showModal = !showModal}>
+      <img src={src} class="img" alt={`A portrait of ${name}`} />
+    </button>
   </slot>
 </div>

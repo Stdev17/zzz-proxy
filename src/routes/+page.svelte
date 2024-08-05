@@ -4,38 +4,50 @@
   import Button from '../components/Button.svelte';
   import Charbox from '../components/Charbox.svelte';
 
+  import SelectModal from '../components/SelectModal.svelte';
+
+  let showModal = false;
+
   type Image = {
     name: string;
     src: string;
+    selected: number;
   }
 
-  const path = "";
+  const path = ""; // static path to images
   let name1 = "Ellen";
   let name2 = "Lycaon";
   let name3 = "Soukaku";
+  let selected = 0;
   let props1: Image = {
     name: name1,
     src: "",
+    selected: 0,
   }
   let props2: Image = {
     name: name2,
     src: "",
+    selected: 0,
   }
   let props3: Image = {
     name: name3,
     src: "",
+    selected: 0,
   }
   $: props1 = {
     name: name1,
     src: path + name1 + ".png",
+    selected: selected,
   };
   $: props2 = {
     name: name2,
     src: path + name2 + ".png",
+    selected: selected,
   };
   $: props3 = {
     name: name3,
     src: path + name3 + ".png",
+    selected: selected,
   };
   name1 = "Ellen";
   name2 = "Lycaon";
@@ -59,12 +71,13 @@
     <p>Guess the party which is used in Shiyu Defense.</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
-      <Charbox --width="5em" --height="11em" props={props1} />
-      <Charbox --width="5em" --height="11em" props={props2} />
-      <Charbox --width="5em" --height="11em" props={props3} />
+      <Charbox --width="5em" --height="11em" bind:props={props1} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="11em" bind:props={props2} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="11em" bind:props={props3} bind:showModal={showModal} />
       <Button class="primary sm" style="margin-top: 3.5em;">
         Guess!
       </Button>
     </div>
+    <SelectModal --width="32em" --height="32em" bind:showModal={showModal}/>
   </Box>
 </div>
