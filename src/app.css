@@ -1,0 +1,14 @@
+/* In your global CSS file, e.g., app.css or global.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-color: #606060;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
