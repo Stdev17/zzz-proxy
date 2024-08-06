@@ -25,6 +25,7 @@
     export let showModal: boolean;
     export let charnum: number = 0;
     export let selected: number = 0;
+    export let clicked: boolean = false;
 
 </script>
 <style>
@@ -37,14 +38,14 @@
   }
 </style>
 
-<Modal bind:showModal={showModal}>
+<Modal bind:showModal={showModal} bind:clicked={clicked}>
     <div slot="header">
         <h2>Agent Select</h2>
     </div>
     <slot>
         <ol class="grid">
             {#each chars as char, i}
-                <Char src={char + ".png"} charname={char} props={props} bind:charnum bind:selected charid={i} bind:showModal={showModal} --width="4em" --height="5.2em" --margin="0.5em"/>
+                <Char src={char + ".png"} charname={char} props={props} bind:clicked={clicked} bind:charnum bind:selected charid={i} bind:showModal={showModal} --width="4em" --height="5.2em" --margin="0.5em"/>
             {/each}
         </ol>
     </slot>

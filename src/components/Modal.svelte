@@ -1,5 +1,6 @@
 <script lang="ts">
     export let showModal: boolean;
+    export let clicked: boolean;
 
     let dialog: HTMLDialogElement;
 
@@ -14,7 +15,7 @@
 <dialog
 bind:this={dialog}
 on:close={() => (showModal = false)}
-on:click|self={() => {dialog.close()}}
+on:click|self={() => {{dialog.close(); clicked = false;}}}
 >
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div on:click|stopPropagation style="align-items: right;">
@@ -23,7 +24,7 @@ on:click|self={() => {dialog.close()}}
         <slot />
         <hr />
         <!-- svelte-ignore a11y-autofocus -->
-        <button autofocus on:click={() => dialog.close()}>close</button>
+        <button autofocus on:click={() => {{dialog.close(); clicked = false;}}}>close</button>
     </div>
 </dialog>
 

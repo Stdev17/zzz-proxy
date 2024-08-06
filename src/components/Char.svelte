@@ -5,13 +5,14 @@
   export let charnum: number;
   export let charid: number;
   export let selected: number;
+  export let clicked: boolean = false;
   export let props;
 
   const onClick = () => {
     showModal = !showModal;
     charnum = charid;
     selected = props.selected;
-    console.log(charnum, selected);
+    clicked = true;
   };
 
 </script>

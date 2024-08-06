@@ -3,8 +3,6 @@
 
   export let props: { src: string; name: string; selected: number };
 
-  let src = props.src;
-  let name = props.name;
   export let charnum: number;
   export let selected: number;
 

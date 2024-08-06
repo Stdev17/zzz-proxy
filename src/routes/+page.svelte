@@ -41,6 +41,7 @@
   let charnum: number = 0;
   let selected = 0;
   let charname: string = "";
+  let clicked = false;
   let props1: Image = {
     name: name1,
     src: path + name1 + ".png",
@@ -61,24 +62,27 @@
     src: path + charname + ".png",
     selected: 0,
   }
-  $: if (selected == 1) {
+  $: if (selected == 1 && clicked) {
     props1 = {
       name: charname,
       src: path + charname + ".png",
       selected: 1,
     };
-  } else if (selected == 2) {
+    clicked = false;
+  } else if (selected == 2 && clicked) {
     props2 = {
       name: charname,
       src: path + charname + ".png",
       selected: 2,
     };
-  } else if (selected == 3) {
+    clicked = false;
+  } else if (selected == 3 && clicked) {
     props3 = {
       name: charname,
       src: path + charname + ".png",
       selected: 3,
     };
+    clicked = false;
   }
   $: charname = chars[charnum];
   $: sprops = {
@@ -111,10 +115,10 @@
       <Charbox --width="5em" --height="11em" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
       <Charbox --width="5em" --height="11em" props={props2} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
       <Charbox --width="5em" --height="11em" props={props3} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Button class="primary sm" style="margin-top: 3.5em;">
+      <Button class="primary sm" style="margin-top: 3.5em; margin-left: 1em;">
         Guess!
       </Button>
     </div>
-    <SelectModal --width="32em" --height="32em" props={sprops} bind:charnum bind:showModal={showModal}/>
+    <SelectModal --width="32em" --height="32em" props={sprops} bind:clicked bind:charnum bind:showModal={showModal}/>
   </Box>
 </div>
