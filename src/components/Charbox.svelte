@@ -1,17 +1,12 @@
 <script lang="ts">
   import Char from './Char.svelte';
 
-  export let props: { src: string; name: string; selected: number;};
+  export let props: { src: string; name: string; selected: number };
 
   let src = props.src;
   let name = props.name;
-  let selected = props.selected;
-
-  $: props = {
-    src: src,
-    name: name,
-    selected: selected,
-  };
+  export let charnum: number;
+  export let selected: number;
 
   export let showModal: boolean;
 
@@ -33,7 +28,7 @@
 
 <div class="charbox">
   <slot>
-    <Char src={props.src} name={props.name} bind:showModal={showModal} --width="5em" --height="6.5em"/>
+    <Char src={props.src} bind:charname={props.name} props={props} bind:charnum={charnum} bind:selected={selected} charid={charnum} bind:showModal={showModal} --width="5em" --height="6.5em"/>
     <p>{props.name}</p>
   </slot>
 </div>

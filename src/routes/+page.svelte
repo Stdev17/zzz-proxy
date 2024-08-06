@@ -4,7 +4,7 @@
   import Button from '../components/Button.svelte';
   import Charbox from '../components/Charbox.svelte';
 
-  import SelectModal from '../components/SelectModal.svelte';
+	import SelectModal from '../components/SelectModal.svelte';
 
   let showModal = false;
 
@@ -14,41 +14,78 @@
     selected: number;
   }
 
+  const chars: string[] = [
+      "Zhu Yuan",
+      "Ellen",
+      "Grace",
+      "Rina",
+      "Koleda",
+      "Nekomata",
+      "Soldier 11",
+      "Lycaon",
+      "Anby",
+      "Nicole",
+      "Corine",
+      "Billy",
+      "Anton",
+      "Ben",
+      "Soukaku",
+      "Lucy",
+      "Piper",
+  ];
+
   const path = ""; // static path to images
   let name1 = "Ellen";
   let name2 = "Lycaon";
   let name3 = "Soukaku";
+  let charnum: number = 0;
   let selected = 0;
+  let charname: string = "";
   let props1: Image = {
     name: name1,
-    src: "",
-    selected: 0,
+    src: path + name1 + ".png",
+    selected: 1,
   }
   let props2: Image = {
     name: name2,
-    src: "",
-    selected: 0,
+    src: path + name2 + ".png",
+    selected: 2,
   }
   let props3: Image = {
     name: name3,
-    src: "",
+    src: path + name3 + ".png",
+    selected: 3,
+  }
+  let sprops: Image = {
+    name: charname,
+    src: path + charname + ".png",
     selected: 0,
   }
-  $: props1 = {
-    name: name1,
-    src: path + name1 + ".png",
+  $: if (selected == 1) {
+    props1 = {
+      name: charname,
+      src: path + charname + ".png",
+      selected: 1,
+    };
+  } else if (selected == 2) {
+    props2 = {
+      name: charname,
+      src: path + charname + ".png",
+      selected: 2,
+    };
+  } else if (selected == 3) {
+    props3 = {
+      name: charname,
+      src: path + charname + ".png",
+      selected: 3,
+    };
+  }
+  $: charname = chars[charnum];
+  $: sprops = {
+    name: charname,
+    src: path + charname + ".png",
     selected: selected,
-  };
-  $: props2 = {
-    name: name2,
-    src: path + name2 + ".png",
-    selected: selected,
-  };
-  $: props3 = {
-    name: name3,
-    src: path + name3 + ".png",
-    selected: selected,
-  };
+  }
   name1 = "Ellen";
   name2 = "Lycaon";
   name3 = "Soukaku";
@@ -71,13 +108,13 @@
     <p>Guess the party which is used in Shiyu Defense.</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
-      <Charbox --width="5em" --height="11em" bind:props={props1} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="11em" bind:props={props2} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="11em" bind:props={props3} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="11em" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="11em" props={props2} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="11em" props={props3} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
       <Button class="primary sm" style="margin-top: 3.5em;">
         Guess!
       </Button>
     </div>
-    <SelectModal --width="32em" --height="32em" bind:showModal={showModal}/>
+    <SelectModal --width="32em" --height="32em" props={sprops} bind:charnum bind:showModal={showModal}/>
   </Box>
 </div>

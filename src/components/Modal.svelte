@@ -14,7 +14,7 @@
 <dialog
 bind:this={dialog}
 on:close={() => (showModal = false)}
-on:click|self={() => dialog.close()}
+on:click|self={() => {dialog.close()}}
 >
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div on:click|stopPropagation style="align-items: right;">
@@ -41,7 +41,7 @@ on:click|self={() => dialog.close()}
 		padding: 1em;
 	}
 	dialog[open] {
-		animation: zoom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+		animation: zoom 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 	@keyframes zoom {
 		from {
@@ -52,7 +52,7 @@ on:click|self={() => dialog.close()}
 		}
 	}
 	dialog[open]::backdrop {
-		animation: fade 0.3s ease-out;
+		animation: fade 0.25s ease-out;
 	}
 	@keyframes fade {
 		from {

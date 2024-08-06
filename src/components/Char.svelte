@@ -1,7 +1,18 @@
 <script lang="ts">
   export let src;
-  export let name;
+  export let charname;
   export let showModal: boolean;
+  export let charnum: number;
+  export let charid: number;
+  export let selected: number;
+  export let props;
+
+  const onClick = () => {
+    showModal = !showModal;
+    charnum = charid;
+    selected = props.selected;
+    console.log(charnum, selected);
+  };
 
 </script>
 
@@ -30,8 +41,8 @@
 
 <div class="char">
   <slot>
-    <button on:click={() => showModal = !showModal}>
-      <img src={src} class="img" alt={`A portrait of ${name}`} />
+    <button on:click={() => onClick()}>
+      <img src={src} class="img" alt={`A portrait of ${charname}`} />
     </button>
   </slot>
 </div>

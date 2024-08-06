@@ -1,5 +1,6 @@
 <script lang="ts">
-    const chars = [
+    export let props: { src: string; name: string; selected: number };
+    const chars: string[] = [
         "Zhu Yuan",
         "Ellen",
         "Grace",
@@ -22,6 +23,9 @@
     import Modal from './Modal.svelte';
 
     export let showModal: boolean;
+    export let charnum: number = 0;
+    export let selected: number = 0;
+
 </script>
 <style>
   .grid {
@@ -33,14 +37,14 @@
   }
 </style>
 
-<Modal showModal={showModal}>
+<Modal bind:showModal={showModal}>
     <div slot="header">
         <h2>Agent Select</h2>
     </div>
     <slot>
         <ol class="grid">
-            {#each chars as char}
-                <Char src={char + ".png"} name={char} bind:showModal={showModal} --width="4em" --height="5.2em" --margin="0.5em"/>
+            {#each chars as char, i}
+                <Char src={char + ".png"} charname={char} props={props} bind:charnum bind:selected charid={i} bind:showModal={showModal} --width="4em" --height="5.2em" --margin="0.5em"/>
             {/each}
         </ol>
     </slot>
