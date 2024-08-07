@@ -53,7 +53,7 @@
     <slot>
         <ol class="grid">
             {#each chars as char, i}
-                <Char src={char + ".png"} charname={char} props={props} bind:clicked={clicked} bind:charnum bind:selected charid={i} bind:showModal={showModal} --width="3em" --height="4em" --margin="0.3em"/>
+                <Char src={char + ".png"} charname={char} props={props} bind:clicked={clicked} bind:charnum bind:selected charid={i} bind:showModal={showModal} --width="2.7em" --height="3.6em" --margin="0.2em"/>
             {/each}
         </ol>
     </slot>

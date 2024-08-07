@@ -260,19 +260,19 @@
 
 <div class="back"></div>
 <div class="main">
-  <Box --width="22rem" --height="52rem" --border="1rem">
-    <h1>ZZZ Agent Wordle</h1>
-    <p style="font-size: 0.85rem;">Guess the team which is used in Shiyu Defense.</p>
+  <Box --width="24rem" --height="56rem" --border="1rem">
+    <h1 style="font-size: 1.8rem;">ZZZ Agent Wordle</h1>
+    <p style="font-size: 0.75rem;">Guess the team which is used in Shiyu Defense.</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
-      <Charbox --width="4rem" --height="8rem" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="4rem" --height="8rem" props={props2} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="4rem" --height="8rem" props={props3} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Button on:click={() => onGuess()} class="primary sm" style="margin-top: 2rem; margin-left: 0.4rem;">
-        Guess!
-      </Button>
+      <Charbox --width="5rem" --height="10rem" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5rem" --height="10rem" props={props2} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5rem" --height="10rem" props={props3} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
     </div>
-    <SelectModal --width="24rem" --height="24rem" props={sprops} bind:clicked bind:charnum bind:showModal={showModal}/>
+    <Button on:click={() => onGuess()} class="primary sm" style="margin-bottom: 1rem;">
+      Guess!
+    </Button>
+    <SelectModal --width="21rem" --height="21rem" props={sprops} bind:clicked bind:charnum bind:showModal={showModal}/>
     <!--Append the new items by onGuess()-->
     <ol class="guess">
       {#each guess_verdict as guess, i}
@@ -281,7 +281,7 @@
       {/each}
     </ol>
     {#if guessComplete && !guessResult}
-      <h1 style="font-size: 1.8rem">Better luck next time!</h1>
+      <h1 style="font-size: 1.6rem">Better luck next time!</h1>
     {/if}
     {#if guessComplete && guessResult}
     <div style="display: flex; flex-direction: row; margin: 1rem;">

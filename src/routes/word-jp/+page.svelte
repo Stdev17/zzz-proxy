@@ -261,38 +261,38 @@
 
 <div class="back"></div>
 <div class="main">
-  <Box --width="30em" --height="75em" --border="1em">
-    <h1>ゼンゼロ・エージェント・ワードル</h1>
-    <p>式輿防衛戦から選ばれたデッキの構成を当てて下さい。</p>
+  <Box --width="24rem" --height="56rem" --border="1em">
+    <h1 style="font-size: 1.2rem;">ゼンゼロ・エージェント・ワードル</h1>
+    <p style="font-size: 0.75rem;">式輿防衛戦から選ばれたデッキの構成を当てて下さい。</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
-      <Charbox --width="5em" --height="10em" props={props1} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="10em" props={props2} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="10em" props={props3} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
-      <Button on:click={() => onGuess()} class="primary sm" style="margin-top: 3.5em; margin-left: 1em;">
-           確認!  
-      </Button>
+      <Charbox --width="5rem" --height="10rem" props={props1} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5rem" --height="10rem" props={props2} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5rem" --height="10rem" props={props3} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
     </div>
-    <SelectModal --width="32em" --height="32em" props={sprops} i18n={i18n} bind:clicked bind:charnum bind:showModal={showModal}/>
+    <Button on:click={() => onGuess()} class="primary sm" style="margin-bottom: 1rem;">
+      確認!  
+    </Button>
+    <SelectModal --width="21rem" --height="21rem" props={sprops} i18n={i18n} bind:clicked bind:charnum bind:showModal={showModal}/>
     <!--Append the new items by onGuess()-->
     <ol class="guess">
       {#each guess_verdict as guess, i}
-          <p>試し {i+1}/5</p>
+          <div style="margin=1rem;">試し {i+1}/5</div>
           <Guess guess={guess} position={pos_guessed[i]} />
       {/each}
     </ol>
     {#if guessComplete && !guessResult}
-      <h1>残念でしたね。</h1>
+      <h1 style="font-size: 1.8rem;">残念でしたね。</h1>
     {/if}
     {#if guessComplete && guessResult}
-    <div style="display: flex; flex-direction: row; margin: 1em;">
+    <div style="display: flex; flex-direction: row; margin: 1rem;">
       <!-- svelte-ignore a11y-invalid-attribute a11y-click-events-have-key-events a11y-no-static-element-interactions a11y-missing-attribute -->
       <a on:click={() => {
         window.open("https://twitter.com/intent/tweet?text="+encodeURI(share), "_blank").focus();
        }}>
-        <img src="Twitter.png" alt="Twitter." width="64" height="64"/>
+        <img src="Twitter.png" alt="Twitter." style="width: 3rem; height: 3rem;" />
       </a>
-      <div style="width: 32px;"></div>
+      <div style="width: 1.5rem;"></div>
       <!-- svelte-ignore a11y-invalid-attribute a11y-click-events-have-key-events a11y-no-static-element-interactions a11y-missing-attribute -->
       <a on:click={() => {
         navigator.clipboard.writeText(share);
@@ -300,7 +300,7 @@
           '--toastBarHeight': 0
         }});
       }}>
-        <img src="Link.png" alt="Copy the result." width="64" height="64" />
+        <img src="Link.png" alt="Copy the result." style="width: 3rem; height: 3rem;" />
       </a>
     </div>
     <SvelteToast/>
