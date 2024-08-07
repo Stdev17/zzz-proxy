@@ -36,6 +36,7 @@
 	"type": "module",
 	"dependencies": {
 		"@castlenine/svelte-canvas-confetti": "^1.0.0",
-		"@zerodevx/svelte-toast": "^0.9.5"
+		"@zerodevx/svelte-toast": "^0.9.5",
+		"amplify-adapter": "^0.1.2"
 	}
 }
