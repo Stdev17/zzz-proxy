@@ -19,7 +19,7 @@
 
 <style>
   .char {
-    margin: var(--margin, 0.5em);
+    margin: var(--margin, 0rem);
     width: var(--width, auto);
     height: var(--height, auto);
     border: 1px solid black;
@@ -28,9 +28,6 @@
   .img {
     width: 100%;
     height: 100%;
-    border-radius: 0;
-    background-size: cover;
-    background-position: center;
   }
   button {
     background: none;

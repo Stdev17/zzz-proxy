@@ -31,8 +31,9 @@
 </script>
 <style>
   .grid {
-    padding: 1em;
+    padding: 0;
     margin: 0;
+    max-width: 100%;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -52,7 +53,7 @@
     <slot>
         <ol class="grid">
             {#each chars as char, i}
-                <Char src={char + ".png"} charname={char} props={props} bind:clicked={clicked} bind:charnum bind:selected charid={i} bind:showModal={showModal} --width="4em" --height="5.2em" --margin="0.5em"/>
+                <Char src={char + ".png"} charname={char} props={props} bind:clicked={clicked} bind:charnum bind:selected charid={i} bind:showModal={showModal} --width="3em" --height="4em" --margin="0.3em"/>
             {/each}
         </ol>
     </slot>

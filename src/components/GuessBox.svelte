@@ -48,16 +48,16 @@
   
 <style>
 .slot {
-    margin: 1em;
-    width: 4em;
-    height: 4em;
+    margin: 0.8rem;
+    width: 3rem;
+    height: 3rem;
     border: 1px solid black;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     display: flex;
 }
 .img {
-    width: 4em;
-    height: 4em;
+    width: 3rem;
+    height: 3rem;
     background-size: cover;
     background-position: center;
 }

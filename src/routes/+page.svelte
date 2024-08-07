@@ -260,38 +260,38 @@
 
 <div class="back"></div>
 <div class="main">
-  <Box --width="30em" --height="75em" --border="1em">
+  <Box --width="22rem" --height="52rem" --border="1rem">
     <h1>ZZZ Agent Wordle</h1>
-    <p>Guess the team which is used in Shiyu Defense.</p>
+    <p style="font-size: 0.85rem;">Guess the team which is used in Shiyu Defense.</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
-      <Charbox --width="5em" --height="10em" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="10em" props={props2} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="10em" props={props3} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Button on:click={() => onGuess()} class="primary sm" style="margin-top: 3.5em; margin-left: 1em;">
+      <Charbox --width="4rem" --height="8rem" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="4rem" --height="8rem" props={props2} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="4rem" --height="8rem" props={props3} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Button on:click={() => onGuess()} class="primary sm" style="margin-top: 2rem; margin-left: 0.4rem;">
         Guess!
       </Button>
     </div>
-    <SelectModal --width="32em" --height="32em" props={sprops} bind:clicked bind:charnum bind:showModal={showModal}/>
+    <SelectModal --width="24rem" --height="24rem" props={sprops} bind:clicked bind:charnum bind:showModal={showModal}/>
     <!--Append the new items by onGuess()-->
     <ol class="guess">
       {#each guess_verdict as guess, i}
-          <p>Guess {i+1}/5</p>
+          <div style="margin=1rem;">Guess {i+1}/5</div>
           <Guess guess={guess} position={pos_guessed[i]} />
       {/each}
     </ol>
     {#if guessComplete && !guessResult}
-      <h1>Better luck next time!</h1>
+      <h1 style="font-size: 1.8rem">Better luck next time!</h1>
     {/if}
     {#if guessComplete && guessResult}
-    <div style="display: flex; flex-direction: row; margin: 1em;">
+    <div style="display: flex; flex-direction: row; margin: 1rem;">
       <!-- svelte-ignore a11y-invalid-attribute a11y-click-events-have-key-events a11y-no-static-element-interactions a11y-missing-attribute -->
       <a on:click={() => {
         window.open("https://twitter.com/intent/tweet?text="+encodeURI(share), "_blank").focus();
        }}>
-        <img src="Twitter.png" alt="Twitter." width="64" height="64"/>
+        <img src="Twitter.png" alt="Twitter." style="width: 3rem; height: 3rem;" />
       </a>
-      <div style="width: 32px;"></div>
+      <div style="width: 1.5rem;"></div>
       <!-- svelte-ignore a11y-invalid-attribute a11y-click-events-have-key-events a11y-no-static-element-interactions a11y-missing-attribute -->
       <a on:click={() => {
         navigator.clipboard.writeText(share);
@@ -299,7 +299,7 @@
           '--toastBarHeight': 0
         }});
       }}>
-        <img src="Link.png" alt="Copy the result." width="64" height="64" />
+        <img src="Link.png" alt="Copy the result." style="width: 3rem; height: 3rem;" />
       </a>
     </div>
     <!-- toast on the bottom -->

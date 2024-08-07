@@ -30,7 +30,7 @@ on:click|self={() => {{dialog.close(); clicked = false;}}}
 
 <style>
     dialog {
-		max-width: 36em;
+		max-width: 24em;
 		border-radius: 0.5em;
 		border: none;
 		padding: 0;

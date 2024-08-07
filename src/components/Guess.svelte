@@ -17,8 +17,8 @@
 </script>
 <style>
   .main {
-    padding: 0em;
-    margin: 0em;
+    padding: 0rem;
+    margin: 0rem;
     display: flex;
     flex-direction: row;
     align-items: center;

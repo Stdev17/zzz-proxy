@@ -53,10 +53,10 @@
 
 <style>
   .charbox {
-    padding: 0em;
-    width: var(--width, 5em);
-    height: var(--height, 11em);
-    margin: 1em;
+    padding: 0rem;
+    width: var(--width, auto);
+    height: var(--height, auto);
+    margin: 0.4rem;
     background-color: #fcfcfc;
     display: flex;
     flex-direction: column;
@@ -67,7 +67,7 @@
 
 <div class="charbox">
   <slot>
-    <Char src={props.src} bind:charname={props.name} props={props} bind:charnum={charnum} bind:selected={selected} charid={charnum} bind:showModal={showModal} --width="5em" --height="6.5em"/>
+    <Char src={props.src} bind:charname={props.name} props={props} bind:charnum={charnum} bind:selected={selected} charid={charnum} bind:showModal={showModal} --width="3.6rem" --height="4.8em"/>
     {#if i18n == "en"}
       <p>{props.name}</p>
     {:else if i18n == "kr"}
