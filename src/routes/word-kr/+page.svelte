@@ -1,12 +1,12 @@
 <script lang="ts">
-  import '../app.css';
-  import Box from '../components/Box.svelte';
-  import Button from '../components/Button.svelte';
-  import Charbox from '../components/Charbox.svelte';
+  import '../../app.css';
+  import Box from '../../components/Box.svelte';
+  import Button from '../../components/Button.svelte';
+  import Charbox from '../../components/Charbox.svelte';
 
-	import SelectModal from '../components/SelectModal.svelte';
-  import Guess from '../components/Guess.svelte';
-  import { chars, specialties, elements, parties } from '../components/Data.ts';
+	import SelectModal from '../../components/SelectModal.svelte';
+  import Guess from '../../components/Guess.svelte';
+  import { chars, specialties, elements, parties } from '../../components/Data.ts';
 
   let showModal = false;
 
@@ -17,6 +17,7 @@
   }
 
   const path = ""; // static path to images
+  const i18n = "kr";
   let name1 = "Ellen";
   let name2 = "Lycaon";
   let name3 = "Soukaku";
@@ -166,7 +167,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../static/Background.png');
+    background-image: url('../../../static/Background.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top;
@@ -196,35 +197,35 @@
 </style>
 
 <svelte:head>
-	<title>ZZZ Agent Wordle</title>
+	<title>젠레스 에이전트 워들</title>
 	<meta name="robots" content="noindex nofollow" />
-	<html lang="en" />
+	<html lang="kr" />
 </svelte:head>
 
 <div class="back"></div>
 <div class="main">
   <Box --width="30em" --height="66em" --border="1em">
-    <h1>ZZZ Agent Wordle</h1>
-    <p>Guess the party which is used in Shiyu Defense.</p>
+    <h1>젠레스 에이전트 워들</h1>
+    <p>시유 방어전에 채용된 파티 구성을 맞춰 보세요.</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
-      <Charbox --width="5em" --height="10em" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="10em" props={props2} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
-      <Charbox --width="5em" --height="10em" props={props3} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="10em" props={props1} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="10em" props={props2} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
+      <Charbox --width="5em" --height="10em" props={props3} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
       <Button on:click={() => onGuess()} class="primary sm" style="margin-top: 3.5em; margin-left: 1em;">
-        Guess!
+           확인!  
       </Button>
     </div>
-    <SelectModal --width="32em" --height="32em" props={sprops} bind:clicked bind:charnum bind:showModal={showModal}/>
+    <SelectModal --width="32em" --height="32em" props={sprops} i18n={i18n} bind:clicked bind:charnum bind:showModal={showModal}/>
     <!--Append the new items by onGuess()-->
     <ol class="guess">
       {#each guess_verdict as guess, i}
-          <p>Guess {i+1}/4</p>
+          <p>시도 {i+1}/4</p>
           <Guess guess={guess} position={pos_guessed[i]} />
       {/each}
     </ol>
     {#if guessComplete && !guessResult}
-      <h1>Better luck next time!</h1>
+      <h1>다음 기회에!</h1>
     {/if}
   </Box>
 </div>

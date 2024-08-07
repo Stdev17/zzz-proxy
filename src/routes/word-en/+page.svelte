@@ -1,12 +1,12 @@
 <script lang="ts">
-  import '../app.css';
-  import Box from '../components/Box.svelte';
-  import Button from '../components/Button.svelte';
-  import Charbox from '../components/Charbox.svelte';
+  import '../../app.css';
+  import Box from '../../components/Box.svelte';
+  import Button from '../../components/Button.svelte';
+  import Charbox from '../../components/Charbox.svelte';
 
-	import SelectModal from '../components/SelectModal.svelte';
-  import Guess from '../components/Guess.svelte';
-  import { chars, specialties, elements, parties } from '../components/Data.ts';
+	import SelectModal from '../../components/SelectModal.svelte';
+  import Guess from '../../components/Guess.svelte';
+  import { chars, specialties, elements, parties } from '../../components/Data.ts';
 
   let showModal = false;
 
@@ -166,7 +166,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../static/Background.png');
+    background-image: url('../../../static/Background.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top;
