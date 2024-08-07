@@ -88,7 +88,7 @@
   let share: string = "ZZZ Wordle: I guessed the team in Shiyu Defense!";
   const correct = parties[Math.floor(Math.random()*parties.length)];
   const onGuess = () => {
-    if (guess_verdict.length >= 4) {
+    if (guess_verdict.length >= 5) {
       return;
     }
     newGuess = [name1, name2, name3];
@@ -191,7 +191,7 @@
       }
       share += "zzz.shelby.moe/word-en";
     }
-    if (!guessComplete && guess_verdict.length == 4) {
+    if (!guessComplete && guess_verdict.length == 5) {
       guessComplete = true;
     }
     if (guessComplete) {
@@ -260,7 +260,7 @@
 
 <div class="back"></div>
 <div class="main">
-  <Box --width="30em" --height="66em" --border="1em">
+  <Box --width="30em" --height="75em" --border="1em">
     <h1>ZZZ Agent Wordle</h1>
     <p>Guess the team which is used in Shiyu Defense.</p>
     <!--Now flex the items in a row-->
@@ -276,7 +276,7 @@
     <!--Append the new items by onGuess()-->
     <ol class="guess">
       {#each guess_verdict as guess, i}
-          <p>Guess {i+1}/4</p>
+          <p>Guess {i+1}/5</p>
           <Guess guess={guess} position={pos_guessed[i]} />
       {/each}
     </ol>
@@ -286,7 +286,7 @@
     {#if guessComplete && guessResult}
     <div style="display: flex; flex-direction: row; margin: 1em;">
       <a href={"https://twitter.com/intent/tweet?text="+encodeURI(share)} target="_blank">
-        <img src="Twitter.png" alt="Twitter." style="width: 4em; height: 4em" />
+        <img src="Twitter.png" alt="Twitter." width="64" height="64" />
       </a>
       <div style="width: 2em;"></div>
       <!-- svelte-ignore a11y-invalid-attribute a11y-click-events-have-key-events a11y-no-static-element-interactions a11y-missing-attribute -->
@@ -296,7 +296,7 @@
           '--toastBarHeight': 0
         }});
       }}>
-        <img src="Link.png" alt="Copy the result." style="width: 4em; height: 4em" />
+        <img src="Link.png" alt="Copy the result." width="64" height="64" />
       </a>
     </div>
     <!-- toast on the bottom -->
