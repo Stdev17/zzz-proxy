@@ -45,6 +45,8 @@
             <h2>Agent Select</h2>
         {:else if i18n === "kr"}
             <h2>에이전트 선택</h2>
+        {:else if i18n === "jp"}
+            <h2>エージェント選択</h2>
         {/if}
     </div>
     <slot>

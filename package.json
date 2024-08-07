@@ -35,6 +35,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@castlenine/svelte-canvas-confetti": "^1.0.0"
+		"@castlenine/svelte-canvas-confetti": "^1.0.0",
+		"@zerodevx/svelte-toast": "^0.9.5"
 	}
 }

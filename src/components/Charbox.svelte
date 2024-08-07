@@ -29,6 +29,26 @@
     "Piper": "파이퍼",
   };
 
+  const i18nJP: Record<string, string> = {
+    "Zhu Yuan": "朱鳶",
+    "Ellen": "エレン",
+    "Grace": "グレース",
+    "Rina": "リナ",
+    "Koleda": "クレタ",
+    "Nekomata": "猫又",
+    "Soldier 11": "１１号",
+    "Lycaon": "ライカン",
+    "Anby": "アンビー",
+    "Nicole": "ニコ",
+    "Corine": "カリン",
+    "Billy": "ビリー",
+    "Anton": "アンドー",
+    "Ben": "ベン",
+    "Soukaku": "蒼角",
+    "Lucy": "ルーシー",
+    "Piper": "パイパー",
+  };
+
 </script>
 
 <style>
@@ -52,6 +72,8 @@
       <p>{props.name}</p>
     {:else if i18n == "kr"}
       <p>{i18nKR[props.name]}</p>
+    {:else if i18n == "jp"}
+      <p>{i18nJP[props.name]}</p>
     {/if}
   </slot>
 </div>

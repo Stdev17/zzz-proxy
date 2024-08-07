@@ -1,6 +1,6 @@
 <script lang="ts">
     export let showModal: boolean;
-    export let clicked: boolean;
+    export let clicked: boolean = false;
 
     let dialog: HTMLDialogElement;
 

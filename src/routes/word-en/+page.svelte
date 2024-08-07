@@ -7,6 +7,7 @@
 	import SelectModal from '../../components/SelectModal.svelte';
   import Guess from '../../components/Guess.svelte';
   import { chars, specialties, elements, parties } from '../../components/Data.ts';
+  import { SvelteToast, toast } from '@zerodevx/svelte-toast';
 
   let showModal = false;
 
@@ -84,6 +85,7 @@
   let pos_guessed: number[] = [];
   let guessComplete: boolean = false;
   let guessResult: boolean = false;
+  let share: string = "ZZZ Wordle: I guessed the team in Shiyu Defense!";
   const correct = parties[Math.floor(Math.random()*parties.length)];
   const onGuess = () => {
     if (guess_verdict.length >= 4) {
@@ -139,6 +141,55 @@
     if (guess == 444) {
       guessComplete = true;
       guessResult = true;
+      share += '\n';
+      for (let i = 0; i < guess_verdict.length; i++) {
+        let tmp = "";
+        for (let j = 2; j >= 0; j--) {
+          // calc guess from guess(444)
+          let tmp_guess = Math.floor(guess_verdict[i] / Math.pow(10, j)) % 10;
+          if (tmp_guess == 0) {
+            tmp += '🔴';
+            continue;
+          }
+          if (tmp_guess == 1) {
+            if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j+1)) % 10 == 1) {
+              tmp += '⚔️';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j+1)) % 10 == 2) {
+              tmp += '🔨';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j+1)) % 10 == 3) {
+              tmp += '☢️';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j+1)) % 10 == 4) {
+              tmp += '🚀';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j+1)) % 10 == 5) {
+              tmp += '🛡️';
+            }
+          }
+          if (tmp_guess == 2) {
+            if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j)) % 10 == 1) {
+              tmp += '💥';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j)) % 10 == 2) {
+              tmp += '🔥';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j)) % 10 == 3) {
+              tmp += '❄️';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j)) % 10 == 4) {
+              tmp += '⚡';
+            } else if (Math.floor(pos_guessed[i] / Math.pow(10, 2*j)) % 10 == 5) {
+              tmp += '💫';
+            }
+          }
+          if (tmp_guess == 3) {
+            tmp += '🟡';
+            continue;
+          }
+          if (tmp_guess == 4) {
+            tmp += '🟢';
+            continue;
+          }
+        }
+        tmp += '\n';
+        share += tmp;
+      }
+      share += "zzz.shelby.moe/word-en";
     }
     if (!guessComplete && guess_verdict.length == 4) {
       guessComplete = true;
@@ -193,6 +244,12 @@
     align-items: center;
     justify-content: center;
   }
+  :root {
+    --toastContainerTop: auto;
+    --toastContainerRight: auto;
+    --toastContainerBottom: 4rem;
+    --toastContainerLeft: calc(50vw - 8rem);
+  }
 </style>
 
 <svelte:head>
@@ -205,7 +262,7 @@
 <div class="main">
   <Box --width="30em" --height="66em" --border="1em">
     <h1>ZZZ Agent Wordle</h1>
-    <p>Guess the party which is used in Shiyu Defense.</p>
+    <p>Guess the team which is used in Shiyu Defense.</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
       <Charbox --width="5em" --height="10em" props={props1} charnum={charnum} bind:selected={selected} bind:showModal={showModal} />
@@ -225,6 +282,24 @@
     </ol>
     {#if guessComplete && !guessResult}
       <h1>Better luck next time!</h1>
+    {/if}
+    {#if guessComplete && guessResult}
+    <div style="display: flex; flex-direction: row; margin: 1em;">
+      <a href={"https://twitter.com/intent/tweet?text="+encodeURI(share)} target="_blank">
+        <img src="Twitter.png" alt="Twitter." style="width: 4em; height: 4em" />
+      </a>
+      <div style="width: 2em;"></div>
+      <!-- svelte-ignore a11y-invalid-attribute a11y-click-events-have-key-events a11y-no-static-element-interactions a11y-missing-attribute -->
+      <a on:click={() => {
+        navigator.clipboard.writeText(share);
+        toast.push('Copied to clipboard!', {duration: 2000, reversed: true, intro: { y: 192 }, theme: {
+          '--toastBarHeight': 0
+        }});
+      }}>
+        <img src="Link.png" alt="Copy the result." style="width: 4em; height: 4em" />
+      </a>
+    </div>
+    <SvelteToast/>
     {/if}
   </Box>
 </div>
