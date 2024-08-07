@@ -285,10 +285,9 @@
     {/if}
     {#if guessComplete && guessResult}
     <div style="display: flex; flex-direction: row; margin: 1em;">
-      <a href={"https://twitter.com/intent/tweet?text="+encodeURI(share)} target="_blank" style="width: 64px; height: 64px;">
+      <a href={"https://twitter.com/intent/tweet?text="+encodeURI(share)} target="_blank" style="width: 64px; height: 64px; display: inline-block; margin-right: 32px;">
         <img src="Twitter.png" alt="Twitter." style="width: 100%; height: 100%;" />
       </a>
-      <div style="width: 2em;"></div>
       <!-- svelte-ignore a11y-invalid-attribute a11y-click-events-have-key-events a11y-no-static-element-interactions a11y-missing-attribute -->
       <a on:click={() => {
         navigator.clipboard.writeText(share);
