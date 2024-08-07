@@ -28,12 +28,14 @@
   .img {
     width: 100%;
     height: 100%;
+    border-radius: 0;
     background-size: cover;
     background-position: center;
   }
   button {
     background: none;
     border: none;
+    border-radius: 0;
     padding: 0;
     cursor: pointer;
     outline: none;
