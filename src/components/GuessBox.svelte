@@ -1,4 +1,5 @@
 <script lang="ts">
+
     export let guess: number;
     export let position: number;
 

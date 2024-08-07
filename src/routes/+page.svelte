@@ -72,6 +72,72 @@
     "Lucy": "Fire",
     "Piper": "Physical",
   };
+  const parties: string[][] = [
+    ["Zhu Yuan", "Grace", "Nicole"],
+    ["Zhu Yuan", "Rina", "Nicole"],
+    ["Zhu Yuan", "Koleda", "Rina"],
+    ["Zhu Yuan", "Koleda", "Nicole"],
+    ["Zhu Yuan", "Koleda", "Lucy"],
+    ["Zhu Yuan", "Lycaon", "Rina"],
+    ["Zhu Yuan", "Lycaon", "Nicole"],
+    ["Zhu Yuan", "Lycaon", "Soukaku"],
+    ["Zhu Yuan", "Anby", "Rina"],
+    ["Zhu Yuan", "Anby", "Nicole"],
+    ["Zhu Yuan", "Nicole", "Lucy"],
+    ["Zhu Yuan", "Billy", "Nicole"],
+    ["Zhu Yuan", "Piper", "Nicole"],
+    ["Ellen", "Grace", "Soukaku"],
+    ["Ellen", "Koleda", "Rina"],
+    ["Ellen", "Koleda", "Soukaku"],
+    ["Ellen", "Lycaon", "Rina"],
+    ["Ellen", "Lycaon", "Soukaku"],
+    ["Ellen", "Anby", "Rina"],
+    ["Ellen", "Anby", "Soukaku"],
+    ["Ellen", "Corine", "Soukaku"],
+    ["Ellen", "Corine", "Lucy"],
+    ["Ellen", "Ben", "Soukaku"],
+    ["Ellen", "Soukaku", "Rina"],
+    ["Ellen", "Soukaku", "Nicole"],
+    ["Ellen", "Soukaku", "Lucy"],
+    ["Ellen", "Piper", "Soukaku"],
+    ["Grace", "Rina", "Nicole"],
+    ["Grace", "Rina", "Lucy"],
+    ["Grace", "Koleda", "Rina"],
+    ["Grace", "Koleda", "Lucy"],
+    ["Grace", "Anby", "Rina"],
+    ["Grace", "Nicole", "Lucy"],
+    ["Grace", "Ben", "Lucy"],
+    ["Nekomata", "Grace", "Nicole"],
+    ["Nekomata", "Anby", "Nicole"],
+    ["Nekomata", "Piper", "Grace"],
+    ["Nekomata", "Piper", "Nicole"],
+    ["Nekomata", "Piper", "Lucy"],
+    ["Soldier 11", "Koleda", "Nicole"],
+    ["Soldier 11", "Koleda", "Ben"],
+    ["Soldier 11", "Koleda", "Lucy"],
+    ["Soldier 11", "Lycaon", "Lucy"],
+    ["Soldier 11", "Nicole", "Lucy"],
+    ["Soldier 11", "Ben", "Nicole"],
+    ["Soldier 11", "Ben", "Lucy"],
+    ["Soldier 11", "Piper", "Lucy"],
+    ["Lycaon", "Soukaku", "Nicole"],
+    ["Corine", "Lycaon", "Soukaku"],
+    ["Corine", "Piper", "Lucy"],
+    ["Anton", "Grace", "Rina"],
+    ["Anton", "Grace", "Anby"],
+    ["Anton", "Grace", "Ben"],
+    ["Anton", "Grace", "Lucy"],
+    ["Anton", "Koleda", "Ben"],
+    ["Anton", "Anby", "Rina"],
+    ["Anton", "Anby", "Nicole"],
+    ["Anton", "Anby", "Lucy"],
+    ["Anton", "Piper", "Grace"],
+    ["Piper", "Grace", "Koleda"],
+    ["Piper", "Grace", "Rina"],
+    ["Piper", "Grace", "Anby"],
+    ["Piper", "Grace", "Lucy"],
+    ["Piper", "Koleda", "Lucy"],
+  ];
 
   const path = ""; // static path to images
   let name1 = "Ellen";
@@ -139,7 +205,9 @@
   let newGuess: string[] = [name1, name2, name3];
   let guess_verdict: number[] = [];
   let pos_guessed: number[] = [];
-  const correct = ["Zhu Yuan", "Anby", "Nicole"];
+  let guessComplete: boolean = false;
+  let guessResult: boolean = false;
+  const correct = parties[Math.floor(Math.random()*parties.length)];
   const onGuess = () => {
     if (guess_verdict.length >= 4) {
       return;
@@ -187,10 +255,24 @@
         guess = 10 * Math.floor(guess / 10) + 4;
       }
     }
-    guess_verdict = [...guess_verdict, guess];
-    pos_guessed = [...pos_guessed, position];
-    if (guess_verdict.length == 4) {
+    if (!guessComplete) {
+      guess_verdict = [...guess_verdict, guess];
+      pos_guessed = [...pos_guessed, position];
+    }
+    if (guess == 444) {
+      guessComplete = true;
+      guessResult = true;
+    }
+    if (!guessComplete && guess_verdict.length == 4) {
+      guessComplete = true;
+    }
+    if (guessComplete) {
       // result
+      if (guessResult) {
+        // share
+      } else {
+        // failed
+      }
     }
   }
 </script>
@@ -228,6 +310,12 @@
     justify-content: center;
   }
 </style>
+
+<svelte:head>
+	<title>Hello world</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 
 <div class="back"></div>
 <div class="main">

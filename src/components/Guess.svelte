@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { ConfettiBurst, random } from "@castlenine/svelte-canvas-confetti";
+
     export let guess: number = 0;
     export let position: number = 0;
 
@@ -31,5 +33,15 @@
             <GuessBox guess={guess_2} position={position_2}/>
             <GuessBox guess={guess_3} position={position_3}/>
         </div>
+        {#if guess == 444}
+        <slot>
+        <ConfettiBurst 
+        origin={[
+                random(window.innerWidth / 4 * 2.5, window.innerWidth / 4 * 1.5), 
+                random(window.innerHeight / 4 * 3, window.innerHeight / 4)
+            ]} 
+        />
+        </slot>
+        {/if}
     </slot>
 </div>
