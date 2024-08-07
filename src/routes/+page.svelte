@@ -196,17 +196,28 @@
 </script>
 
 <style>
-  .main {
-    padding: 0;
-    margin: 0;
+  .back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-image: url('../../static/Background.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-position: top;
+    background-attachment: scroll;
+    overflow-y: hidden;
+  }
+  .main {
+    padding: 0;
+    margin: 0;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
   }
   .guess {
     padding: 0;
@@ -218,8 +229,9 @@
   }
 </style>
 
+<div class="back"></div>
 <div class="main">
-  <Box --width="30em" --height="65em" --border="1em">
+  <Box --width="30em" --height="66em" --border="1em">
     <h1>ZZZ Agent Wordle</h1>
     <p>Guess the party which is used in Shiyu Defense.</p>
     <!--Now flex the items in a row-->

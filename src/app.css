@@ -5,8 +5,9 @@ html, body {
   box-sizing: border-box;
   background-repeat: no-repeat;
   background-color: #434343;
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 *, *::before, *::after {
