@@ -261,7 +261,7 @@
 
 <div class="back"></div>
 <div class="main">
-  <Box --width="24rem" --height="56rem" --border="1rem">
+  <Box --width="24rem" --height="57rem" --border="1rem">
     <h1 style="font-size: 1.8rem;">젠레스 에이전트 워들</h1>
     <p style="font-size: 0.85rem;">시유 방어전에 채용된 파티 구성을 맞춰 보세요.</p>
     <!--Now flex the items in a row-->

@@ -261,9 +261,9 @@
 
 <div class="back"></div>
 <div class="main">
-  <Box --width="24rem" --height="56rem" --border="1em">
+  <Box --width="24rem" --height="57rem" --border="1em">
     <h1 style="font-size: 1.2rem;">ゼンゼロ・エージェント・ワードル</h1>
-    <p style="font-size: 0.75rem;">式輿防衛戦から選ばれたデッキの構成を当てて下さい。</p>
+    <p style="font-size: 0.7rem;">式輿防衛戦から選ばれたデッキの構成を当てて下さい。</p>
     <!--Now flex the items in a row-->
     <div style="display: flex; flex-direction: row;">
       <Charbox --width="5rem" --height="10rem" props={props1} charnum={charnum} i18n={i18n} bind:selected={selected} bind:showModal={showModal} />
