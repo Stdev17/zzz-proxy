@@ -286,9 +286,9 @@
       <h1 style="font-size: 1.8rem; margin=0em;">다음 기회에!</h1>
       <div style="display: flex; flex-direction: row; margin=0.5rem;">
         <p>정답: </p>
-        <Char src={name1+".png"} charname={name1} props={props1} charnum={charnum} selected={selected} charid={charnum} showModal={showModal} --width="3rem" --height="4rem" --margin-left="0.8rem"/>
-        <Char src={name2+".png"} charname={name2} props={props2} charnum={charnum} selected={selected} charid={charnum} showModal={showModal} --width="3rem" --height="4rem" --margin-left="0.8rem"/>
-        <Char src={name3+".png"} charname={name3} props={props3} charnum={charnum} selected={selected} charid={charnum} showModal={showModal} --width="3rem" --height="4rem" --margin-left="0.8rem"/>
+        <Char src={correct[0]+".png"} charname={correct[0]} props={props1} charnum={charnum} selected={selected} charid={charnum} showModal={showModal} --width="3rem" --height="4rem" --margin-left="0.8rem"/>
+        <Char src={correct[1]+".png"} charname={correct[1]} props={props2} charnum={charnum} selected={selected} charid={charnum} showModal={showModal} --width="3rem" --height="4rem" --margin-left="0.8rem"/>
+        <Char src={correct[2]+".png"} charname={correct[2]} props={props3} charnum={charnum} selected={selected} charid={charnum} showModal={showModal} --width="3rem" --height="4rem" --margin-left="0.8rem"/>
       </div>
     {/if}
     {#if guessComplete && guessResult}
