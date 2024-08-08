@@ -67,7 +67,7 @@
 
 <div class="charbox">
   <slot>
-    <Char src={props.src} bind:charname={props.name} props={props} bind:charnum={charnum} bind:selected={selected} charid={charnum} bind:showModal={showModal} --width="4.5rem" --height="6em"/>
+    <Char src={props.src} bind:charname={props.name} props={props} bind:charnum={charnum} bind:selected={selected} charid={charnum} bind:showModal={showModal} --width="4.5rem" --height="6rem"/>
     {#if i18n == "en"}
       <p>{props.name}</p>
     {:else if i18n == "kr"}

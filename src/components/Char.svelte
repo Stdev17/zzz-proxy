@@ -20,6 +20,7 @@
 <style>
   .char {
     margin: var(--margin, 0rem);
+    margin-left: var(--margin-left, 0rem);
     width: var(--width, auto);
     height: var(--height, auto);
     border: 1px solid black;
